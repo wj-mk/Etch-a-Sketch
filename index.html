@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .square {
+                height: 20px;
+                width: 20px;
+                border-style: solid;
+                display: inline-block;
+            }
+
+            .row {
+                height: 26px;
+            }
+
+0
+        </style>
+    </head>
+    
+    <body>
+        <div id='grid'></div>
+        <script>
+            const grid = document.querySelector('#grid');
+
+            // build grid
+            for (var i = 0; i < 4; i++) {
+                // build row of grid
+                const row = document.createElement('div');
+                row.setAttribute('class', 'row')
+                // build each square in row
+                for (var j = 0; j < 4; j++) {
+                    const square = document.createElement('div');
+                    square.setAttribute('class', 'square');
+                    square.setAttribute('id', `square${i}${j}`);
+                    row.appendChild(square);      
+                }
+                grid.appendChild(row)
+            }
+        </script>
+    </body>
+</html>
