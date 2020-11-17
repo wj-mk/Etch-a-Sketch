@@ -12,16 +12,19 @@
                 height: 24px;
             }
             
+            .grid {
+                border-style: solid;
+                width: 384px;
+            }
         </style>
     </head>
     
     <body>
-        <div id='grid'></div>
+        <button type="button" id='rest'>Reset</button>
+        <div id='grid' class='grid'></div>
         <script>
-            const grid = document.querySelector('#grid');
-            grid.setAttribute('border-style', 'solid')
-
             // build grid
+            const grid = document.querySelector('#grid');
             for (var i = 0; i < 16; i++) {
                 // build row of grid
                 const row = document.createElement('div');
