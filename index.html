@@ -3,17 +3,15 @@
     <head>
         <style>
             .square {
-                height: 20px;
-                width: 20px;
-                border-style: solid;
+                height: 24px;
+                width: 24px;
                 display: inline-block;
             }
 
             .row {
-                height: 26px;
+                height: 24px;
             }
-
-0
+            
         </style>
     </head>
     
@@ -21,20 +19,26 @@
         <div id='grid'></div>
         <script>
             const grid = document.querySelector('#grid');
+            grid.setAttribute('border-style', 'solid')
 
             // build grid
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < 16; i++) {
                 // build row of grid
                 const row = document.createElement('div');
                 row.setAttribute('class', 'row')
                 // build each square in row
-                for (var j = 0; j < 4; j++) {
+                for (var j = 0; j < 16; j++) {
                     const square = document.createElement('div');
                     square.setAttribute('class', 'square');
                     square.setAttribute('id', `square${i}${j}`);
+                    square.setAttribute('onmouseover' , 'mOver(this)')
                     row.appendChild(square);      
                 }
                 grid.appendChild(row)
+            }
+
+            function mOver(obj) {
+                obj.setAttribute('style', 'background: pink');
             }
         </script>
     </body>
