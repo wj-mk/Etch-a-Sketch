@@ -1,48 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            .square {
-                height: 24px;
-                width: 24px;
-                display: inline-block;
-            }
-
-            .row {
-                height: 24px;
-            }
-            
-            .grid {
-                border-style: solid;
-                width: 384px;
-            }
-        </style>
+        <link href="style.css" rel="stylesheet">
     </head>
-    
     <body>
         <button type="button" id='rest'>Reset</button>
         <div id='grid' class='grid'></div>
-        <script>
-            // build grid
-            const grid = document.querySelector('#grid');
-            for (var i = 0; i < 16; i++) {
-                // build row of grid
-                const row = document.createElement('div');
-                row.setAttribute('class', 'row')
-                // build each square in row
-                for (var j = 0; j < 16; j++) {
-                    const square = document.createElement('div');
-                    square.setAttribute('class', 'square');
-                    square.setAttribute('id', `square${i}${j}`);
-                    square.setAttribute('onmouseover' , 'mOver(this)')
-                    row.appendChild(square);      
-                }
-                grid.appendChild(row)
-            }
-
-            function mOver(obj) {
-                obj.setAttribute('style', 'background: pink');
-            }
-        </script>
+        <script src='script.js'></script>
     </body>
 </html>
