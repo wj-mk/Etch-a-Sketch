@@ -20,7 +20,7 @@ for (var i = 0; i < sqNum; i++) {
         row.appendChild(square);      
     }
     grid.appendChild(row)
-}
+};
 
 function mOver(obj) {
     obj.style.background = 'pink';
@@ -36,7 +36,35 @@ btn.addEventListener('click', function(e) {
         }
     }  ;
 
-    prompt("How many square per side to make the new grid? (max. 100)")
+    choice = prompt("How many square per side to make the new grid? (max. 100)");
+    if (choice > 0 || choice <= 100) {
+        sqNum = choice;
+        sqLen = 480/sqNum;
+
+        while (grid.firstChild) {
+            grid.removeChild(grid.firstChild);
+        }
+
+        for (var i = 0; i < sqNum; i++) {
+            // build row of grid
+            const row = document.createElement('div');
+            row.style.height = `${sqLen}px`;
+            // build each square in row
+            for (var j = 0; j < sqNum; j++) {
+                const square = document.createElement('div');
+                square.setAttribute('class', 'square');
+                square.style.height = `${sqLen}px`;
+                square.style.width = `${sqLen}px`;
+                square.setAttribute('id', `square${i},${j}`);
+                square.setAttribute('onmouseover' , 'mOver(this)')
+                row.appendChild(square);      
+            }
+            grid.appendChild(row)
+        };
+    }
+    
+
+
 });
 
 // standard size grid, but adaptive square size to fit grid
