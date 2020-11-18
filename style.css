@@ -1,14 +1,9 @@
 .square {
-    height: 24px;
-    width: 24px;
     display: inline-block;
-}
-
-.row {
-    height: 24px;
 }
 
 .grid {
     border-style: solid;
-    width: 384px;
+    width: 480px;
+    height: 480px;
 }
