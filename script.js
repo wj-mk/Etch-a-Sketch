@@ -1,8 +1,18 @@
-let gridSize = 16;
+// tidy up code and general refactoring
+// cells going outside grid for some values, I think it's when the inputed size leads to a non-integer quotient.
 
-// build initial grid
+
 const grid = document.querySelector('#grid');
+let gridSize = 16; // default number of squares per row and column
+populateGrid(gridSize);
 
+btnReset.addEventListener('click', function() {
+    resetGrid();
+    promptNewGridSize();
+    populateGrid(gridSize);
+});
+
+// functions
 function populateGrid(size) {
     for (var i = 0; i < size; i++) {
         // build row of grid
@@ -15,47 +25,32 @@ function populateGrid(size) {
             square.style.height = `${480/size}px`;
             square.style.width = `${480/size}px`;
             square.setAttribute('id', `square${i},${j}`);
-            square.setAttribute('onmouseover' , 'mOver(this)')
+            square.setAttribute('onmouseover' , 'mouseOver(this)')
             row.appendChild(square);      
         }
         grid.appendChild(row)
     };
 };
 
-// populate grid with squares
-populateGrid(gridSize);
-
-function mOver(obj) {
+function mouseOver(obj) {
     obj.style.background = 'pink';
-}
+};
 
-//reset button click
-btn.addEventListener('click', function() {
-    // reset grid
+function resetGrid() {
     while (grid.firstChild) {
         grid.removeChild(grid.firstChild);
     }
+};
 
-    // obtain new grid size from user
+function promptNewGridSize() {
     while (true) {
-        choice = prompt("How many square per side to make the new grid? (max. 100)");
-
-        console.log(choice)
+        choice = prompt("Choose new grid size (min. 1, max. 100):");
         if (choice > 0 && choice <= 100) {
             gridSize = choice;
             break;
         }
         else if (choice == null) {
             break;
-        }
+        };
     };
-
-    populateGrid(gridSize)
-});
-
-
-
-// refactor code function to make grid
-// refactor code function to reset grid
-// tidy up code and general refactoring
-// cells going outside grid for some values, I think it's when the inputed size leads to a non-integer quotient.
+};
