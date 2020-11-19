@@ -1,5 +1,6 @@
-// tidy up code and general refactoring
+
 // cells going outside grid for some values, I think it's when the inputed size leads to a non-integer quotient.
+// tidy up populate grid function, especially CSS stuff, can the mouseOver function be gotten rid of?
 
 
 const grid = document.querySelector('#grid');
@@ -14,21 +15,17 @@ btnReset.addEventListener('click', function() {
 
 // functions
 function populateGrid(size) {
+    numSqs = `${48/size}vw`;
     for (var i = 0; i < size; i++) {
-        // build row of grid
-        const row = document.createElement('div');
-        row.style.height = `${480/size}px`;
-        // build each square in row
         for (var j = 0; j < size; j++) {
             const square = document.createElement('div');
             square.setAttribute('class', 'square');
-            square.style.height = `${480/size}px`;
-            square.style.width = `${480/size}px`;
+            square.style.height = numSqs;
+            square.style.width = numSqs;
             square.setAttribute('id', `square${i},${j}`);
             square.setAttribute('onmouseover' , 'mouseOver(this)')
-            row.appendChild(square);      
+            grid.appendChild(square);      
         }
-        grid.appendChild(row)
     };
 };
 
@@ -38,7 +35,7 @@ function mouseOver(obj) {
 
 function resetGrid() {
     while (grid.firstChild) {
-        grid.removeChild(grid.firstChild);
+        grid.removeChild(grid.lastChild);
     }
 };
 
